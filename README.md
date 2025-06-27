@@ -41,8 +41,6 @@ After training, you can predict phenotypes for a single protein sequence via com
 python predict.py  <AMINO_ACID_SEQUENCE>
 ```
 
-You will get output similar to:
-
 Example output:
 ```bash
 {
