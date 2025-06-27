@@ -1,9 +1,9 @@
 # Influenza Protein Language Model for Multi-Task Phenotype Prediction
 
 ## Overview
-This repository provides a **multi-task learning framework** built upon ESM-2 to simultaneously predict:
+This repository provides a **multi-task learning framework** built upon protein language model to simultaneously predict:
 
-- Host species origin (avian/human/human_origin_avian)
+- Host species (avian/human/human_origin_avian)
 - Virulence level (Avirulent / Virulent)
 - Receptor binding preference (α2-3 / α2-6)
 
@@ -28,8 +28,10 @@ python train.py
 
 This will:
 - Load and preprocess the datasets
-- Fine-tune the last N(defualt 5) layers of the ESM-2 model with three classification heads simultaneously
-- Save the trained checkpoint to ./model/esm2_fz28_unfz5_3task_2seq.pth
+- Fine-tune the last N (defualt 5) layers of the pretrained model with three classification heads simultaneously
+- Save the trained checkpoint to ./model/esm2_flu_3task.pth
+
+You can use either the [ESM2](https://github.com/facebookresearch/esm/) pretrained model or the fine-tuned [ESM2_Flu](https://drive.google.com/drive/folders/1d1BpyrjqdI_1sA2HcgM5VDFZdFlN5Icc?usp=drive_link) model on influenza protein sequences as the pretrained model.
 
 
 ### Running Predictions
@@ -44,21 +46,9 @@ You will get output similar to:
 Example output:
 ```bash
 {
-  "host": {
-    "pred_label": "human",
-    "pred_index": 2,
-    "probs": [...]
-  },
-  "virulence": {
-    "pred_label": "Virulent",
-    "pred_index": 1,
-    "prob": 0.92
-  },
-  "receptor": {
-    "pred_label": "α2-6",
-    "pred_index": 1,
-    "prob": 0.87
-  }
+  "host": { "pred_label": "human", "pred_index": 2, "probs": 0.98 },
+  "virulence": { "pred_label": "Virulent",  "pred_index": 1, "prob": 0.92 },
+  "receptor": { "pred_label": "α2-6", "pred_index": 1, "prob": 0.87 }
 }
 ```
 
