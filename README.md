@@ -1,4 +1,4 @@
-# Multi-Task ESM2 for Influenza Protein Phenotype Prediction
+# Influenza Protein Language Model for Multi-Task Phenotype Prediction
 
 ## Overview
 This repository provides a **multi-task learning framework** built upon ESM-2 to simultaneously predict:
